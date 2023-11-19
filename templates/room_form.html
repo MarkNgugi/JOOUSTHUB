@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <h1>Create Room</h1>
+
+    <form action="{% url 'create-room' %}" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Submit">
+    </form>
+
+{% endblock %}

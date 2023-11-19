@@ -3,6 +3,7 @@
 {% block content %}
 
 <div>
+    <h3><a href="/create-room/{{room.id}}">Create Room</a></h3>
     <div>
         {% for room in rooms %}
         <h4>Host @<b>{{room.Host.username}}</b></h4>
