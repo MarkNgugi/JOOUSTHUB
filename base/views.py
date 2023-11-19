@@ -1,23 +1,23 @@
 from django.shortcuts import render,redirect
-from .models import Room
+from .models import Room,Topic
 from .forms import RoomForm
-rooms = [
 
-    {"id":1,"name":"DJANGO"},
-    {"id":2,"name":"WEB DEVELOPMENT"},
-    {"id":3,"name":"BACKEND DEVELOPMENT"},
-    {"id":4,"name":"POLITICS"},
-    {"id":5,"name":"MUSIC"},
-    {"id":6,"name":"SPORTS"},
-    {"id":7,"name":"GAMING"},
+# rooms = [
 
+#     {"id":1,"name":"DJANGO"},
+#     {"id":2,"name":"WEB DEVELOPMENT"},
+#     {"id":3,"name":"BACKEND DEVELOPMENT"},
+#     {"id":4,"name":"POLITICS"},
+#     {"id":5,"name":"MUSIC"},
+#     {"id":6,"name":"SPORTS"},
+#     {"id":7,"name":"GAMING"},
 
-]
+# ]
 
 def home(request):
-
+    topics = Topic.objects.all()
     rooms = Room.objects.all()
-    context = {"rooms":rooms}
+    context = {"rooms":rooms,"topics":topics}
     return render(request,"home.html",context)
 
 def room(request,pk):
