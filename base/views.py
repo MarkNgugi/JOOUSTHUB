@@ -27,7 +27,8 @@ def home(request):
         Q(Host__username=q)
     )
 
-    context = {"rooms":rooms,"topics":topics}
+    room_count = rooms.count()
+    context = {"rooms":rooms,"topics":topics,"room_count":room_count}
     return render(request,"home.html",context)
 
 def room(request,pk):
