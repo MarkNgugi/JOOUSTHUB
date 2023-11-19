@@ -29,13 +29,13 @@ def home(request):
 
     room_count = rooms.count()
     context = {"rooms":rooms,"topics":topics,"room_count":room_count}
-    return render(request,"home.html",context)
+    return render(request,"base/home.html",context)
 
 def room(request,pk):
 
     room = Room.objects.get(id=pk)
     context = {"room":room}
-    return render(request,"room.html",context)
+    return render(request,"base/room.html",context)
 
 def createRoom(request):
     form = RoomForm()
@@ -47,7 +47,7 @@ def createRoom(request):
             return redirect('home')
         
     context = {'form':form}
-    return render(request,"room_form.html",context)
+    return render(request,"base/room_form.html",context)
 
 def updateRoom(request,pk):
     room = Room.objects.get(id=pk)
@@ -60,7 +60,7 @@ def updateRoom(request,pk):
             return redirect('home')
     
     context = {'form':form}
-    return render(request,"room_form.html",context)
+    return render(request,"base/room_form.html",context)
 
 def deleteRoom(request,pk):
     room = Room.objects.get(id=pk)
@@ -68,4 +68,4 @@ def deleteRoom(request,pk):
         room.delete()
         return redirect('home')
     context = {"item":room}
-    return render(request,"delete.html",context)
+    return render(request,"base/delete.html",context)
