@@ -14,6 +14,7 @@
     <div> 
         <h2>Browse Topics</h2>
         <hr>
+        <h3><a href="{% url 'home' %}">All</a></h3>
         {% for topic in topics %}
         <h3><a href="{% url 'home' %}?q={{topic.Topic_name}}">{{topic.Topic_name}}</a></h3>
         {% endfor %}
@@ -29,7 +30,7 @@
         <h4>Host @<b>{{room.Host.username}}</b></h4>
         <h4><a href="/update-room/{{room.id}}/">Edit</a> 
         <a href="/delete-room/{{room.id}}/">Delete</a></h4>
-        <h2>{{room.id}} -- <a href="{% url 'room' room.id %}">{{room.Room_name}}</a></h2>
+        <h2> <a href="{% url 'room' room.id %}">{{room.Room_name}}</a></h2>
         <small>TOPIC: <b>{{room.Topic}}</b></small>
         <hr>
         {% endfor %}
