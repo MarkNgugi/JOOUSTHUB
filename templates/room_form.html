@@ -3,7 +3,7 @@
 {% block content %}
     <h1>Create Room</h1>
 
-    <form action="{% url 'create-room' %}" method="POST">
+    <form method="POST" action="">
         {% csrf_token %}
         {{form.as_p}}
         <input type="submit" value="Submit">
