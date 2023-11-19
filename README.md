@@ -1,6 +1,6 @@
 # JOOUSTHUB
 
-Welcome to [Your Project Name]!
+Welcome to JOOUSTHUB!
 
 🚀 We're open for contributions! 🚀
 
