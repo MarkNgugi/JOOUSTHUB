@@ -2,8 +2,28 @@
 
 {% block content %}
 
-<div>
-    <h3><a href="/create-room/{{room.id}}">Create Room</a></h3>
+<style>
+    .home-container {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+    }
+</style>
+
+<div class="home-container">
+
+    <div> 
+        <h2>Browse Topics</h2>
+        <hr>
+        {% for topic in topics %}
+        <h3><a href="{% url 'home' %}?q={{topic.Topic_name}}">{{topic.Topic_name}}</a></h3>
+        {% endfor %}
+    </div>
+
+    <div>
+    <div>
+        <h3><a href="/create-room/{{room.id}}">Create Room</a></h3>
+    </div>
+    
     <div>
         {% for room in rooms %}
         <h4>Host @<b>{{room.Host.username}}</b></h4>
@@ -13,7 +33,9 @@
         <small>TOPIC: <b>{{room.Topic}}</b></small>
         <hr>
         {% endfor %}
+    </div>        
     </div>
+
 </div>
 
 {% endblock %}
