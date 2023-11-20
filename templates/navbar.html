@@ -1,8 +1,9 @@
-<a href="/home/">
+<a href="{% url 'home' %}">
     <h2>MENU</h2>
 </a>
 
 <form method="GET" action="{% url 'home' %}">
     <input type="text" name="q" placeholder="Search...">
 </form>
+<a href="{% url 'login' %}">Login</a>
 <hr>
