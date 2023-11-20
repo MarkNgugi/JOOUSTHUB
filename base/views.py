@@ -1,5 +1,5 @@
 from django.db.models import Q
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 from django.shortcuts import render,redirect
 from .models import Room,Topic
 from .forms import RoomForm
@@ -40,6 +40,10 @@ def loginPage(request):
 
     context = {}
     return render(request,'base/login_register.html',context)
+
+def logoutPage(request):
+    logout(request)
+    return redirect('home')
 
 def home(request):
 
