@@ -2,6 +2,39 @@
 
 {% block content %}
 
-<h1>{{room.Room_name}}</h1>
+<style>
+    .room-container {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+    }
+
+    /* Add any additional styles here */
+</style>
+
+<div class="room-container">
+    <div>
+        <h1>{{ room.Room_name }}</h1>
+        <h2>Room Description</h2>
+        <p>{{ room.description }}</p>
+
+        <div>
+            <h2>Conversations</h2>
+            <hr>
+            <div>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <input type="text" name="message" placeholder="Write message here" />
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h2>Participants</h2>
+        <hr>
+        <!-- Add participants list or any additional content here -->
+    </div>
+</div>
 
 {% endblock %}
