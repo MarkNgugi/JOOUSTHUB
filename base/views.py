@@ -6,6 +6,7 @@ from .models import Room,Topic
 from .forms import RoomForm
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
 
 
 # rooms = [
@@ -21,6 +22,8 @@ from django.contrib import messages
 # ]
 
 def loginPage(request):
+    page='login'
+
     if request.user.is_authenticated:
         return redirect('home')
 
@@ -41,12 +44,31 @@ def loginPage(request):
         else:
             messages.error(request, 'Incorrect Username or Password')
 
-    context = {}
+    context = {'page':page}
     return render(request,'base/login_register.html',context)
 
 def logoutPage(request):
     logout(request)
     return redirect('home')
+
+def RegisterUser(request):
+    form = UserCreationForm()
+
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.error(request, 'An error occurred during registration')
+            return redirect('RegisterUser')
+
+    context = {'form':form}
+    return render(request, 'base/login_register.html',context)
+
 
 def home(request):
 
