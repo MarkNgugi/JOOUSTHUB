@@ -120,6 +120,8 @@ def createRoom(request):
     if request.method == "POST":
         form = RoomForm(request.POST)
         if form.is_valid():
+            form=form.save(commit=False)
+            form.Host = request.user
             form.save()
             return redirect('home')
         
